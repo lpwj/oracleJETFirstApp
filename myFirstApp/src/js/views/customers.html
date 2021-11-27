@@ -1,0 +1,47 @@
+<!--
+ Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<oj-form-layout id='formLayoutOptions' max-columns="3"
+                direction="row"
+                class="oj-formlayout-full-width"
+                user-assistance-density='compact'>
+
+
+  <oj-input-text :id="[[inputFirstNameId]]"
+                 value="{{inputFirstNameValue}}"
+                 label-hint="[[inputFirstNameLabel]]"
+                 on-value-changed="[[onInputFirstNameValueChange]]">
+  </oj-input-text>
+
+  <oj-input-text :id="[[inputLastNameId]]"
+                 value="{{inputLastNameValue}}"
+                 disabled="[[isInputLastNameDisabled]]"
+                 label-hint="[[inputsLastNameLabel]]">
+  </oj-input-text>
+
+  <oj-input-text :id="[[inputFullNameId]]"
+                 value="{{inputFullNameValue}}" disabled
+                 label-hint="[[inputsFullNameLabel]]">
+  </oj-input-text>
+
+  <oj-input-number :id="[[inputWeightId]]" label-hint="[[inputsWeightLabel]]"
+                   value="">
+  </oj-input-number>
+
+
+
+  <oj-input-number :id="[[inputAgeId]]" label-hint="[[inputsAgeLabel]]"
+                   value="{{inputAgeValue}}">
+  </oj-input-number>
+
+
+
+
+</oj-form-layout>
+<span>
+  <oj-bind-text value="[[inputFirstNameValue]]">
+  </oj-bind-text>
+
+</span>
