@@ -28,7 +28,6 @@ define([
       this._initAlLLabels();
       this._initAllObservables();
 
-
     }
 
 
