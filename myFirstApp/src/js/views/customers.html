@@ -6,12 +6,14 @@
 <oj-form-layout id='formLayoutOptions' max-columns="3"
                 direction="row"
                 class="oj-formlayout-full-width"
-                user-assistance-density='compact'>
+                user-assistance-density='efficient'>
 
 
   <oj-input-text :id="[[inputFirstNameId]]"
                  value="{{inputFirstNameValue}}"
                  label-hint="[[inputFirstNameLabel]]"
+                 validators="[[inputFirstNameValidators]]"
+                 on-raw-value-changed="[[onInputFirstNameRawValueChange]]"
                  on-value-changed="[[onInputFirstNameValueChange]]">
   </oj-input-text>
 
@@ -26,13 +28,26 @@
                  label-hint="[[inputsFullNameLabel]]">
   </oj-input-text>
 
-  <oj-input-number :id="[[inputWeightId]]" label-hint="[[inputsWeightLabel]]"
-                   value="">
+  <oj-input-number :id="[[inputWeightId]]"
+                   value="[[inputWeightValue]]"
+                   messages-custom="[[inputWeightMessagesCustom]]"
+                   on-value-changed="[[onInputWeightRawValueChange]]"
+                   label-hint="[[inputsWeightLabel]]"
+                   step="1" min="0">
   </oj-input-number>
 
+  <oj-input-date :id="[[inputBirthdayId]]"
+                 value="{{inputBirthdayValue}}"
+                 on-value-changed="[[onInputBirthdayValueChanged]]"
+                 max="[[inputBirthdayMaxValue]]"
+                 label-hint="[[inputBirthdayLabel]]">
+  </oj-input-date>
 
 
-  <oj-input-number :id="[[inputAgeId]]" label-hint="[[inputsAgeLabel]]"
+
+  <oj-input-number :id="[[inputAgeId]]"
+                   label-hint="[[inputsAgeLabel]]"
+                   disabled
                    value="{{inputAgeValue}}">
   </oj-input-number>
 
@@ -41,7 +56,7 @@
 
 </oj-form-layout>
 <span>
-  <oj-bind-text value="[[inputFirstNameValue]]">
+  <oj-bind-text value="[[inputBirthdayValue]]">
   </oj-bind-text>
 
 </span>
