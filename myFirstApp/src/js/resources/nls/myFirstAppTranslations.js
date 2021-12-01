@@ -16,7 +16,8 @@ define({
             tooShort: 'Number of characters is too low. Enter at least {0} characters',
         },
         messagesCustom: {
-            weight: 'You should have an higher value!'
+            weight: 'You should have an higher value!',
+            birthday: 'You should have at least 18 years old!',
         }
     },
 

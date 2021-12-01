@@ -29,9 +29,9 @@ define([
     function CustomerViewModel() {
       this._initAllIds();
       this._initAllLabels();
+      this._initVariables();
       this._initAllObservables();
       this._initValidators();
-      this._initVariables();
       this.onInputFirstNameValueChange = this._onInputFirstNameValueChange.bind(this);
       this.onInputFirstNameRawValueChange = this._onInputFirstNameRawValueChange.bind(this);
       this.onInputWeightRawValueChange = this._onInputWeightRawValueChange.bind(this);
@@ -83,6 +83,8 @@ define([
 
       // messages custom
       this.inputWeightMessagesCustom = ko.observableArray([]);
+      
+      this.inputBirthdayMessagesCustom = ko.observableArray([this.birthdayMessage]);
 
 
       // disabled
@@ -125,6 +127,11 @@ define([
     CustomerViewModel.prototype._initVariables = function () {
       const minAgeValue = this._getBirthday(18);
       this.inputBirthdayMaxValue = minAgeValue;
+      this.birthdayMessage = {
+        detail: _t('messagesCustom.birthday'),
+        summary: '',
+        severity: 'error',
+      };
     };
 
     /**
@@ -177,6 +184,11 @@ define([
       const value = event.detail.value;
       if (value) {
         this.inputAgeValue(this._getAge(value));
+        this.inputBirthdayMessagesCustom([]);
+      }
+      else {
+        this.inputAgeValue(null);
+        this.inputBirthdayMessagesCustom([this.birthdayMessage]);
       }
     };
 
