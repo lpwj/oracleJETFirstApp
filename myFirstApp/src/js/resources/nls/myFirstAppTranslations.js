@@ -8,6 +8,8 @@ define({
             weight: 'Weight',
             birthday: 'Birthday',
             age: 'Age',
+            country: 'Country',
+            state: 'State',
         },
         validators: {
             firstNameLengthHint: 'Custom hint: value must have at least {0} characters but not more than {1}',

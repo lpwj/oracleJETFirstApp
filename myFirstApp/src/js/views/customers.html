@@ -44,20 +44,31 @@
                  label-hint="[[inputBirthdayLabel]]">
   </oj-input-date>
 
-
-
   <oj-input-number :id="[[inputAgeId]]"
-                   label-hint="[[inputsAgeLabel]]"
-                   disabled
-                   value="{{inputAgeValue}}">
+                   value="{{inputAgeValue}}"
+                   label-hint="[[inputsAgeLabel]]" disabled>
   </oj-input-number>
+
+  <oj-select-single :id="[[inputCountryId]]"
+                    value="{{inputCountryValue}}"
+                    on-value-changed="[[onInputCountryValueChanged]]"
+                    label-hint="[[inputCountryLabel]]"
+                    data="[[inputCountryDataProvider]]">
+  </oj-select-single>
+
+  <oj-select-single :id="[[inputStateId]]"
+                    value="{{inputStateValue}}"
+                    label-hint="[[inputStateLabel]]"
+                    data="[[inputStateDataProvider]]"
+                    disabled="[[isInputStateDisabled]]">
+  </oj-select-single>
 
 
 
 
 </oj-form-layout>
 <span>
-  <oj-bind-text value="[[inputBirthdayValue]]">
+  <oj-bind-text value="[[inputCountryValue]]">
   </oj-bind-text>
 
 </span>
