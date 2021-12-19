@@ -18,7 +18,10 @@ define([
 	'ojs/ojinputnumber',
 	'ojs/ojformlayout',
 	'ojs/ojdatetimepicker',
-	'ojs/ojselectsingle'
+	'ojs/ojselectsingle',
+	'ojs/ojbutton',
+	'ojs/ojvalidationgroup',
+	'ojs/ojmessages'
 ],
 	function (
 		Translations,
@@ -40,6 +43,9 @@ define([
 			this.onInputWeightRawValueChange = this._onInputWeightRawValueChange.bind(this);
 			this.onInputBirthdayValueChanged = this._onInputBirthdayValueChanged.bind(this);
 			this.onInputCountryValueChanged = this._onInputCountryValueChanged.bind(this);
+
+			this.onCreateButtonClick = this._onCreateButtonClick.bind(this);
+			this.onResetButtonClick = this._onResetButtonClick.bind(this);
 		}
 
 
@@ -57,6 +63,8 @@ define([
 			this.inputAgeId = CoreUtils.generateUniqueId();
 			this.inputCountryId = CoreUtils.generateUniqueId();
 			this.inputStateId = CoreUtils.generateUniqueId();
+			// validation group
+			this.formValidationGroupId = CoreUtils.generateUniqueId();
 		};
 
 		/**
@@ -73,6 +81,9 @@ define([
 			this.inputsAgeLabel = _t('inputs.age');
 			this.inputCountryLabel = _t('inputs.country');
 			this.inputStateLabel = _t('inputs.state');
+			// buttons
+			this.createButtonLabel = _t('buttons.create');
+			this.resetButtonLabel = _t('buttons.reset');
 		};
 
 		/**
@@ -92,8 +103,9 @@ define([
 
 			// messages custom
 			this.inputWeightMessagesCustom = ko.observableArray([]);
-
 			this.inputBirthdayMessagesCustom = ko.observableArray([this.birthdayMessage]);
+
+			this.messagesDataprovider = ko.observable(new ArrayDataProvider([]));
 
 
 			// disabled
@@ -132,7 +144,7 @@ define([
 			this.inputFirstNameValidators = ko.observableArray([
 				new AsyncLengthValidator(
 					{
-						min: 5,
+						min: 2,
 						max: 10,
 						hint: {
 							inRange: _t('validators.firstNameLengthHint', '{min}', '{max}'),
@@ -156,6 +168,7 @@ define([
 		 */
 		CustomerViewModel.prototype._initVariables = function () {
 			const minAgeValue = this._getBirthday(18);
+
 			this.inputBirthdayMaxValue = minAgeValue;
 			this.birthdayMessage = {
 				detail: _t('messagesCustom.birthday'),
@@ -163,6 +176,7 @@ define([
 				severity: 'error',
 			};
 
+			this.messagesPosition = CoreUtils.toastMessagePosition();
 
 
 		};
@@ -271,6 +285,40 @@ define([
 					keyAttributes: 'value',
 				}));
 			}
+		};
+
+		/**
+		 * @function _onCreateButtonClick
+		 * @description Executed when the user click the create button.
+		 */
+		CustomerViewModel.prototype._onCreateButtonClick = function () {
+			const valid = CoreUtils.checkValidationGroup(this.formValidationGroupId);
+			if (valid) {
+				this.messagesDataprovider(new ArrayDataProvider([
+					{
+						severity: "confirmation",
+						detail: "Saved Successfully",
+						timestamp: new Date().toISOString(),
+						autoTimeout: CoreUtils.getAutoTimeout()
+					},
+				]));
+			}
+		};
+
+		/**
+		 * @function _onResetButtonClick
+		 * @description Executed when the user click the reset button.
+		 */
+		CustomerViewModel.prototype._onResetButtonClick = function () {
+			this.inputFirstNameValue(null);
+			this.inputLastNameValue(null);
+			this.inputFullNameValue(null);
+			this.inputWeightValue(null);
+			this.inputBirthdayValue(null);
+			this.inputAgeValue(null);
+			this.inputCountryValue(null);
+			this.inputStateValue(null);
+
 		};
 
 		/**

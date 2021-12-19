@@ -32,6 +32,32 @@ define([],
             generateUniqueId() {
                 return `uid-${this.counter++}`;
             }
+
+            checkValidationGroup(id) {
+                const tracker = document.getElementById(id);
+                if (tracker.valid === "valid") {
+                    return true;
+                }
+                else {
+                    // show messages on all the components that are invalidHiddden, i.e., the
+                    // required fields that the user has yet to fill out.
+                    tracker.showMessages();
+                    tracker.focusOn("@firstInvalidShown");
+                    return false;
+                }
+            }
+
+            toastMessagePosition() {
+                return {
+                    my: { vertical: "top", horizontal: "end" },
+                    at: { vertical: "top", horizontal: "end" },
+                    of: "window",
+                };
+            }
+
+            getAutoTimeout(){
+                return 8000;
+            }
         }
 
         // creating instance

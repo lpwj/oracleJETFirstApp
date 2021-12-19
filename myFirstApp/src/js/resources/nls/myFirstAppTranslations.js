@@ -20,6 +20,10 @@ define({
         messagesCustom: {
             weight: 'You should have an higher value!',
             birthday: 'You should have at least 18 years old!',
+        },
+        buttons: {
+            create: 'Create',
+            reset: 'Reset'
         }
     },
 
