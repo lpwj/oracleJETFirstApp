@@ -1,0 +1,46 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "firstName": "Sebastian",
+      "lastName": "Eschweiler",
+      "email": "sebastian@codingthesmartway.com",
+      "country": 2,
+      "state": 2,
+      "birthday": "1999-11-05"
+    },
+    {
+      "id": 2,
+      "firstName": "Steve",
+      "lastName": "Palmer",
+      "email": "steve@codingthesmartway.com",
+      "country": 1,
+      "state": 1,
+      "birthday": "1999-12-05"
+    },
+    {
+      "id": 3,
+      "firstName": "Ann",
+      "lastName": "Smith",
+      "email": "ann@codingthesmartway.com",
+      "country": 1,
+      "state": 2,
+      "birthday": "1999-01-05"
+    },
+    {
+      "id": 4,
+      "firstName": "Joel",
+      "lastName": "Carneiro",
+      "email": "lpwj@codingthesmartway.com",
+      "country": 1,
+      "state": 1,
+      "birthday": "1995-02-05"
+    }
+  ],
+  "fruits": [
+    {
+      "id": 1,
+      "name": "apple"
+    }
+  ]
+}

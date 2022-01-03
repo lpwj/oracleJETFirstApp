@@ -8,20 +8,33 @@
 /*
  * Customers service abstraction
  */
-define([],
-    function () {
-        class CustomersServices {
-            /**
-             * @description A singleton to hold the variable we want to increment across all the viewModels.
-             * generates an unique id by calling the generateUniqueId method.
-             * @returns The existing instance, if not created it creates it, otherwise it will always return the existing one.
-             */
-            constructor() {
-                
-            }
-           
-        }
+define([], function () {
+  class CustomersServices {
+    /**
+     * @description
+     * @returns
+     */
+    constructor() {}
 
+    saveCustomer(params) {
+      console.log(params);
+
+      return new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          const random = Math.random() < 0.5;
+          const response = {
+            success: random,
+          };
+          if (random) {
+            resolve(response);
+          } else {
+            response.message = 'Something went wrong';
+            reject(response);
+          }
+        }, 2000);
+      });
     }
+  }
 
-);
+  return new CustomersServices();
+});
