@@ -11,14 +11,7 @@
 define(['../accUtils', 'utils/Service'], function (accUtils, ServiceUtils) {
   function DashboardViewModel() {
     async function getData() {
-      let dataFromService;
-      try {
-        response = await fetch(ServiceUtils.buildEndpointUrl('getCustomers'));
-        if (!response.ok) throw Error('Something went wrong');
-        dataFromService = await response.json();
-      } catch (error) {
-        console.log(error);
-      }
+      const dataFromService = await ServiceUtils.fetchData('getCustomers');
 
       console.log(dataFromService);
     }

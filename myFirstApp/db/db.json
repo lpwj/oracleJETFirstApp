@@ -4,7 +4,7 @@
       "id": 1,
       "firstName": "Sebastian",
       "lastName": "Eschweiler",
-      "email": "sebastian@codingthesmartway.com",
+      "weight": 80,
       "country": 2,
       "state": 2,
       "birthday": "1999-11-05"
@@ -13,7 +13,7 @@
       "id": 2,
       "firstName": "Steve",
       "lastName": "Palmer",
-      "email": "steve@codingthesmartway.com",
+      "weight": 80,
       "country": 1,
       "state": 1,
       "birthday": "1999-12-05"
@@ -22,7 +22,7 @@
       "id": 3,
       "firstName": "Ann",
       "lastName": "Smith",
-      "email": "ann@codingthesmartway.com",
+      "weight": 80,
       "country": 1,
       "state": 2,
       "birthday": "1999-01-05"
@@ -31,10 +31,46 @@
       "id": 4,
       "firstName": "Joel",
       "lastName": "Carneiro",
-      "email": "lpwj@codingthesmartway.com",
+      "weight": 80,
       "country": 1,
       "state": 1,
       "birthday": "1995-02-05"
+    },
+    {
+      "firstName": "Joel",
+      "lastName": "Carneiro",
+      "weight": 77,
+      "birthday": "2004-01-01",
+      "country": 1,
+      "state": 2,
+      "id": 5
+    },
+    {
+      "firstName": "Some",
+      "lastName": "Example",
+      "weight": 898,
+      "birthday": "2004-01-02",
+      "country": 1,
+      "state": 1,
+      "id": 6
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asd",
+      "weight": 23,
+      "birthday": "2004-01-02",
+      "country": 2,
+      "state": 1,
+      "id": 7
+    },
+    {
+      "firstName": "James",
+      "lastName": "Potter",
+      "weight": 80,
+      "birthday": "2000-11-15",
+      "country": 2,
+      "state": 1,
+      "id": 8
     }
   ],
   "fruits": [

@@ -311,15 +311,16 @@ define([
           new ArrayDataProvider([
             {
               severity: 'error',
-              detail: error.message,
+              detail: error,
               timestamp: new Date().toISOString(),
               autoTimeout: CoreUtils.getAutoTimeout(),
             },
           ])
         );
+        return;
       }
       console.log(dataFromService);
-      if (dataFromService && dataFromService.success) {
+      if (dataFromService && dataFromService.id) {
         this.messagesDataprovider(
           new ArrayDataProvider([
             {

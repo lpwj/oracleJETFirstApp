@@ -8,7 +8,7 @@
 /*
  * Customers service abstraction
  */
-define([], function () {
+define(['utils/Service'], function (ServiceUtils) {
   class CustomersServices {
     /**
      * @description
@@ -16,23 +16,8 @@ define([], function () {
      */
     constructor() {}
 
-    saveCustomer(params) {
-      console.log(params);
-
-      return new Promise(function (resolve, reject) {
-        setTimeout(() => {
-          const random = Math.random() < 0.5;
-          const response = {
-            success: random,
-          };
-          if (random) {
-            resolve(response);
-          } else {
-            response.message = 'Something went wrong';
-            reject(response);
-          }
-        }, 2000);
-      });
+    async saveCustomer(customer) {
+      return await ServiceUtils.fetchData('getCustomers', 'POST', customer);
     }
   }
 
