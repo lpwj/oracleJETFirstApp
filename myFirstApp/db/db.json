@@ -73,10 +73,27 @@
       "id": 8
     }
   ],
-  "fruits": [
+  "usersCountries": [
+    {
+      "id": 0,
+      "series": "Portugal",
+      "group": "Country",
+      "value": 20,
+      "color": "#cbbcf4"
+    },
     {
       "id": 1,
-      "name": "apple"
+      "series": "United Kingdom",
+      "group": "Country",
+      "value": 10,
+      "color": "#70db93"
+    },
+    {
+      "id": 2,
+      "series": "Spain",
+      "group": "Country",
+      "value": 5,
+      "color": "#10425c"
     }
   ]
 }

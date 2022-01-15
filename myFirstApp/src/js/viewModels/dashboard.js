@@ -8,15 +8,27 @@
 /*
  * Your dashboard ViewModel code goes here
  */
-define(['../accUtils', 'utils/Service'], function (accUtils, ServiceUtils) {
-  function DashboardViewModel() {
-    async function getData() {
-      const dataFromService = await ServiceUtils.fetchData('getCustomers');
+define([
+  'ojs/ojtranslation',
+  '../accUtils',
+  'knockout',
+  'services/DashboardServices',
+  'ojs/ojarraydataprovider',
+  'ojs/ojmodule-element-utils',
+  'ojs/ojchart',
+  'ojs/ojconveyorbelt',
+], function (Translations, accUtils, ko, DashboardServices, ArrayDataProvider, ModuleElementUtils) {
+  const _t = Translations.getTranslatedString;
+  function DashboardViewModel(params) {
+    console.log(DashboardServices);
+    const { router } = params;
+    this.router = router;
 
-      console.log(dataFromService);
-    }
+    console.log(params);
 
-    getData();
+    this._initAllLabels();
+    this._initObservables();
+    this._initVariables();
 
     // Below are a set of the ViewModel methods invoked by the oj-module component.
     // Please reference the oj-module jsDoc for additional information.
@@ -50,6 +62,67 @@ define(['../accUtils', 'utils/Service'], function (accUtils, ServiceUtils) {
       // Implement if needed
     };
   }
+
+  /**
+   * @function _initAllIds
+   * @description Initializes all ids.
+   *
+   */
+  DashboardViewModel.prototype._initAllIds = function () {
+    // this.inputFirstNameId = CoreUtils.generateUniqueId();
+  };
+
+  /**
+   * @function _initAllLabels
+   * @description Initializes all labels (Translations).
+   *
+   */
+  DashboardViewModel.prototype._initAllLabels = function () {
+    this.usersDemoDataLabel = _t('headers.usersDemoData');
+  };
+
+  /**
+   * @function _initAllObservables
+   * @description Initializes all the observable values.
+   *
+   */
+  DashboardViewModel.prototype._initObservables = function () {
+    this.usersPieSelectionValue = ko.observableArray([]);
+    this.usersCountriesData = ko.observableArray([]);
+
+    this.usersPieSelectionValue.subscribe(
+      function ([value]) {
+        console.log(value);
+        this.router.go({ path: 'about', params: { id: value } });
+      }.bind(this)
+    );
+  };
+
+  DashboardViewModel.prototype._initVariables = async function () {
+    const modulesConfigArray = [
+      {
+        module: ModuleElementUtils.createConfig({
+          name: 'charts/pie',
+          params: {
+            usersPieSelectionValue: this.usersPieSelectionValue,
+            usersCountriesData: this.usersCountriesData,
+          },
+        }),
+      },
+    ];
+
+    this.modulesDataProvider = new ArrayDataProvider(modulesConfigArray);
+
+    let dataFromService;
+    try {
+      dataFromService = await DashboardServices.fetchUsersCountries();
+    } catch (error) {
+      console.log(error);
+    }
+    if (dataFromService) {
+      this.usersCountriesData(dataFromService);
+    }
+  };
 
   /*
    * Returns an instance of the ViewModel providing one instance of the ViewModel. If needed,
