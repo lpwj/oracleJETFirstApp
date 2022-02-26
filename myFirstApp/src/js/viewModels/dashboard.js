@@ -89,6 +89,8 @@ define([
   DashboardViewModel.prototype._initObservables = function () {
     this.usersPieSelectionValue = ko.observableArray([]);
     this.usersCountriesData = ko.observableArray([]);
+    this.usersCountByAgeData = ko.observableArray([]);
+    this.usersCountByAgeValue = ko.observableArray([]);
 
     this.usersPieSelectionValue.subscribe(
       function ([value]) {
@@ -98,7 +100,7 @@ define([
     );
   };
 
-  DashboardViewModel.prototype._initVariables = async function () {
+  DashboardViewModel.prototype._initVariables = function () {
     const modulesConfigArray = [
       {
         module: ModuleElementUtils.createConfig({
@@ -109,10 +111,28 @@ define([
           },
         }),
       },
+      {
+        module: ModuleElementUtils.createConfig({
+          name: 'charts/pie',
+          params: {
+            usersPieSelectionValue: this.usersCountByAgeValue,
+            usersCountriesData: this.usersCountByAgeData,
+          },
+        }),
+      },
     ];
 
     this.modulesDataProvider = new ArrayDataProvider(modulesConfigArray);
 
+    this._loadPieChartsData();
+  };
+
+  /**
+   * @function _loadPieChartsData
+   * @description
+   * @protected
+   */
+  DashboardViewModel.prototype._loadPieChartsData = async function () {
     let dataFromService;
     try {
       dataFromService = await DashboardServices.fetchUsersCountries();
@@ -121,6 +141,16 @@ define([
     }
     if (dataFromService) {
       this.usersCountriesData(dataFromService);
+    }
+
+    let usersCountByAgeDataDataFromService;
+    try {
+      usersCountByAgeDataDataFromService = await DashboardServices.fetchUsersCountByAge();
+    } catch (error) {
+      console.log(error);
+    }
+    if (usersCountByAgeDataDataFromService) {
+      this.usersCountByAgeData(usersCountByAgeDataDataFromService);
     }
   };
 

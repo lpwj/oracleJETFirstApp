@@ -1,0 +1,59 @@
+<!-- BOOK  -->
+<div on-click="[[onClick]]"
+     :id="[[$properties.bookId]]"
+     class="oj-panel oj-panel-shadow-sm">
+    <!-- HEADERS  -->
+    <div
+         class="custom-height-200 oj-divider-bottom oj-divider-padding oj-flex oj-sm-align-items-center oj-sm-flex-items-initial oj-sm-justify-content-center">
+        <div
+             class="oj-flex oj-sm-flex-items-initial oj-sm-justify-content-center">
+            <div
+                 class="oj-sm-width-full oj-flex-item oj-sm-padding-2x-horizontal">
+                <oj-avatar class="oj-flex-item" role="img"
+                           size="lg" initials="B"
+                           src="[[$properties.src]]"
+                           aria-label="">
+                </oj-avatar>
+            </div>
+
+        </div>
+        <div
+             class="oj-sm-width-full oj-flex oj-sm-flex-items-initial oj-sm-justify-content-center">
+            <div
+                 class="oj-flex-item oj-sm-padding-2x-horizontal">
+                <span
+                      class="oj-typography-subheading-sm oj-typography-semi-bold">
+                    <oj-bind-text value="[[bookTitle]]">
+                    </oj-bind-text>
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <!-- HEADERS END -->
+
+    <!-- DESC  -->
+    <div
+         class="oj-flex oj-sm-align-items-center oj-sm-flex-items-initial oj-sm-justify-content-flex-start oj-sm-padding-4x-vertical">
+
+        <div class="oj-flex-item ">
+            <div
+                 class="oj-flex-item oj-typography-subheading-sm oj-typography-semi-bold oj-text-color-secondary">
+                <oj-bind-text
+                              value="[[$properties.author]]">
+                </oj-bind-text>
+            </div>
+
+            <div
+                 class="oj-flex-item oj-typography-body-sm oj-typography-semi-bold oj-text-color-">
+                <oj-bind-text value="[[$properties.type]]">
+                </oj-bind-text>
+            </div>
+
+        </div>
+    </div>
+    <!-- DESC END -->
+
+
+</div>
+<!-- BOOK  end -->

@@ -19,5 +19,13 @@ define(['utils/Service'], function (ServiceUtils) {
     return await ServiceUtils.fetchData('usersCountries');
   };
 
+  /**
+   *
+   * @returns
+   */
+  DashboardServices.prototype.fetchUsersCountByAge = async function () {
+    return await ServiceUtils.fetchData('usersCountByAge');
+  };
+
   return new DashboardServices;
 });

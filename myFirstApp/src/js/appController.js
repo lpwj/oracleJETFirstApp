@@ -59,7 +59,7 @@ define([
     let navData = [
       { path: '', redirect: 'dashboard' },
       { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' } },
-      { path: 'incidents', detail: { label: 'Incidents', iconClass: 'oj-ux-ico-fire' } },
+      { path: 'books', detail: { label: 'Books', iconClass: 'oj-ux-ico-book' } },
       { path: 'customers', detail: { label: 'Customers', iconClass: 'oj-ux-ico-contact-group' } },
       { path: 'about', detail: { label: 'About', iconClass: 'oj-ux-ico-information-s' } },
     ];
