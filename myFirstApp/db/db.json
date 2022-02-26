@@ -125,28 +125,64 @@
       "title": "Reminders of Him",
       "author": "Colleen Hoover",
       "type": "Paperback",
-      "src": "https://images-na.ssl-images-amazon.com/images/I/41n9-p6-PpL._SX331_BO1,204,203,200_.jpg"
+      "src": "https://images-na.ssl-images-amazon.com/images/I/41n9-p6-PpL._SX331_BO1,204,203,200_.jpg",
+      "rating": 5
     },
     {
       "id": "1",
       "title": "Maus I: A Survivor's Tale",
       "author": "Art Spiegelman",
       "type": "Paperback",
-      "src": "https://images-na.ssl-images-amazon.com/images/I/51R45cOV8UL._SX348_BO1,204,203,200_.jpg"
+      "src": "https://images-na.ssl-images-amazon.com/images/I/51R45cOV8UL._SX348_BO1,204,203,200_.jpg",
+      "rating": 2
     },
     {
       "id": "2",
       "title": "I Love You to the Moon and Back",
       "author": "Amelia Hepworth",
       "type": "Board book",
-      "src": "https://images-na.ssl-images-amazon.com/images/I/51p2SDOCV9L._SX482_BO1,204,203,200_.jpg"
+      "src": "https://images-na.ssl-images-amazon.com/images/I/51p2SDOCV9L._SX482_BO1,204,203,200_.jpg",
+      "rating": 3
     },
     {
       "id": "3",
       "title": "Hardcover ",
       "author": "James Patterson",
       "type": "Hardcover ",
-      "src": "https://images-na.ssl-images-amazon.com/images/I/51lRyY9R4uL._SX337_BO1,204,203,200_.jpg"
+      "src": "https://images-na.ssl-images-amazon.com/images/I/51lRyY9R4uL._SX337_BO1,204,203,200_.jpg",
+      "rating": 2
+    },
+    {
+      "id": "4",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "type": "Hardcover ",
+      "src": "https://images-na.ssl-images-amazon.com/images/I/515mvgd0pXL._AC_SX184_.jpg",
+      "rating": 1
+    },
+    {
+      "id": "5",
+      "title": "The 48 Laws of Power",
+      "author": "Robert Greene",
+      "type": "Paperback ",
+      "src": "https://images-na.ssl-images-amazon.com/images/I/41KY-NORo9L._AC_SX184_.jpg",
+      "rating": 2
+    },
+    {
+      "id": "6",
+      "title": "How to Catch a Leprechaun",
+      "author": "Adam Wallace",
+      "type": "Hardcover ",
+      "src": "https://images-na.ssl-images-amazon.com/images/I/51jayVNubpL._AC_SX184_.jpg",
+      "rating": 4
+    },
+    {
+      "id": "7",
+      "title": "Where's Spot?",
+      "author": "Eric Hill",
+      "type": "Board book",
+      "src": "https://images-na.ssl-images-amazon.com/images/I/51o4b5AdNLL._AC_SX184_.jpg",
+      "rating": 3
     }
   ]
 }

@@ -19,7 +19,7 @@ define(['utils/Service'], function (ServiceUtils) {
     return new Promise(function (resolve, reject) {
       setTimeout(async () => {
         return resolve(await ServiceUtils.fetchData('books'));
-      }, 2000);
+      }, 1000);
     });
   };
 

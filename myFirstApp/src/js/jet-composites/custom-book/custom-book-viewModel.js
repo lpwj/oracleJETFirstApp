@@ -6,61 +6,137 @@
  * @ignore
  */
 
-define(['ojs/ojavatar'], function () {
+define([
+  'ojs/ojtranslation',
+  'knockout',
+  'ojs/ojarraydataprovider',
+  'ojs/ojavatar',
+  'ojs/ojgauge',
+  'ojs/ojdialog',
+  'ojs/ojselectsingle',
+], function (Translations, ko, ArrayDataProvider) {
+  const _t = Translations.getTranslatedString;
+  /**
+   * @module CustomBookViewModel
+   * @description
+   * @param {*} context
+   */
   function CustomBookViewModel(context) {
-    this.initVariables(context);
-    const element = context.element;
-    // Below are a set of the ViewModel methods invoked by the oj-module component.
-    // Please reference the oj-module jsDoc for additional information.
+    this._initIds();
 
-    this.onClick = (arg) => {
-      const params = {
-        bubbles: true,
-        detail: { value: context.properties.bookId },
-      };
-      element.dispatchEvent(new CustomEvent('bookClick', params));
-    };
+    this._initLabels();
 
-    /**
-     * Optional ViewModel method invoked after the View is inserted into the
-     * document DOM.  The application can put logic that requires the DOM being
-     * attached here.
-     * This method might be called multiple times - after the View is created
-     * and inserted into the DOM and after the View is reconnected
-     * after being disconnected.
-     */
-    this.connected = () => {
-      document.title = 'Books';
-      console.log('connected');
-      // Implement further logic if needed
-    };
+    this._initObservables();
 
-    /**
-     * Optional ViewModel method invoked after the View is disconnected from the DOM.
-     */
-    this.disconnected = () => {
-      // Implement if needed
-      console.log('disconnected');
-    };
+    this._initVariables(context);
 
-    /**
-     * Optional ViewModel method invoked after transition to the new View is complete.
-     * That includes any possible animation between the old and the new View.
-     */
-    this.transitionCompleted = () => {
-      // Implement if needed
-      console.log('transition');
-    };
+    this.element = context.element;
+    this.context = context;
+
+    this.onClick = this._onClick.bind(this);
+
+    this.handleAddToCart = this._handleAddToCart.bind(this);
+
+    this.handleAddToList = this._handleAddToList.bind(this);
+
+    this.changeHeartColor = this._changeHeartColor.bind(this);
   }
 
-  CustomBookViewModel.prototype.initVariables = function (context) {
+  /**
+   * @function _initIds
+   * @description
+   * @protected
+   */
+  CustomBookViewModel.prototype._initIds = function () {};
+
+  /**
+   * @function _initLabels
+   * @description
+   * @protected
+   */
+  CustomBookViewModel.prototype._initLabels = function () {
+    this.addToCartLabel = _t('buttons.addToCart');
+    this.addToListLabel = _t('buttons.addToList');
+  };
+
+  /**
+   * @function _initObservables
+   * @description
+   * @protected
+   */
+  CustomBookViewModel.prototype._initObservables = function () {
+    this.heartColor = ko.observable(null);
+    this.inputListValue = ko.observable(null);
+    this.listData = ko.observableArray([
+      {
+        value: 1,
+        label: 'Favorites',
+      },
+    ]);
+  };
+
+  /**
+   * @function _initVariables
+   * @description
+   * @param {Object} context
+   * @protected
+   */
+  CustomBookViewModel.prototype._initVariables = function (context) {
     this.bookTitle = context.properties.bookTitle;
   };
 
-  /*
-   * Returns an instance of the ViewModel providing one instance of the ViewModel. If needed,
-   * return a constructor for the ViewModel so that the ViewModel is constructed
-   * each time the view is displayed.
+  /**
+   * @function _handleAddToCart
+   * @description
+   * @param {Object} e
    */
+  CustomBookViewModel.prototype._handleAddToCart = function (e) {
+    alert('add to cart');
+  };
+
+  /**
+   * @function _handleAddToList
+   * @description
+   * @protected
+   */
+  CustomBookViewModel.prototype._handleAddToList = function () {
+    const params = {
+      bubbles: true,
+      detail: { value: this.context.properties.bookId },
+    };
+    this.element.dispatchEvent(new CustomEvent('addedToList', params));
+  };
+
+  /**
+   * @function _onClick
+   * @description
+   * @protected
+   */
+  CustomBookViewModel.prototype._onClick = function () {
+    const params = {
+      bubbles: true,
+      detail: { value: this.context.properties.bookId },
+    };
+    this.element.dispatchEvent(new CustomEvent('bookClick', params));
+  };
+
+  /**
+   * @function _changeHeartColor
+   * @description
+   * @public
+   */
+  CustomBookViewModel.prototype._changeHeartColor = function (value) {
+    this.heartColor(value);
+  };
+
+  /**
+   * @function _getHeartColor
+   * @description
+   * @public
+   */
+  CustomBookViewModel.prototype._getHeartColor = function () {
+    return this.heartColor();
+  };
+
   return CustomBookViewModel;
 });

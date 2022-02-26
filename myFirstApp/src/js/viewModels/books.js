@@ -10,59 +10,82 @@ define([
   'ojs/ojarraydataprovider',
   'services/BooksServices',
   'knockout',
+  'ojs/ojmodule-element-utils',
   'ojs/ojavatar',
   'ojs/ojprogress-circle',
   'custom-book/loader',
-], function (ArrayDataProvider, BooksServices, ko) {
+], function (ArrayDataProvider, BooksServices, ko, ModuleElementUtils) {
   function BooksViewModel() {
+    this._initIds();
     this._initObservables();
     this._initVariables();
     this._initBooksData();
 
     this.bookClick = (e) => {
-      console.log(e);
-    };
-    // Below are a set of the ViewModel methods invoked by the oj-module component.
-    // Please reference the oj-module jsDoc for additional information.
-
-    /**
-     * Optional ViewModel method invoked after the View is inserted into the
-     * document DOM.  The application can put logic that requires the DOM being
-     * attached here.
-     * This method might be called multiple times - after the View is created
-     * and inserted into the DOM and after the View is reconnected
-     * after being disconnected.
-     */
-    this.connected = () => {
-      document.title = 'Books';
-      // Implement further logic if needed
+      // console.log(e);
     };
 
-    /**
-     * Optional ViewModel method invoked after the View is disconnected from the DOM.
-     */
-    this.disconnected = () => {
-      // Implement if needed
-    };
-
-    /**
-     * Optional ViewModel method invoked after transition to the new View is complete.
-     * That includes any possible animation between the old and the new View.
-     */
-    this.transitionCompleted = () => {
-      // Implement if needed
+    this.bookAddedToList = (e) => {
+      console.log(e.detail.value);
+      this.bookId(e.detail.value);
+      if (document.getElementById(this.bookId()).getHeartColor() === BooksViewModel.COLORS.red) {
+        document.getElementById(this.bookId()).changeHeartColor(null);
+        return;
+      }
+      document.getElementById(this.favoritesDialogId).open();
     };
   }
 
+  BooksViewModel.COLORS = {
+    red: 'red',
+  };
+
+  /**
+   * @function
+   * @description
+   */
+  BooksViewModel.prototype._initIds = function () {
+    this.favoritesDialogId = 'favorites-dialog-id';
+  };
+
+  /**
+   * @function
+   * @description
+   */
   BooksViewModel.prototype._initObservables = function () {
+    this.bookId = ko.observable(null);
     this.isLoading = ko.observable(true);
     this.booksData = ko.observableArray([]);
+
+    this.listData = ko.observableArray([
+      {
+        value: 1,
+        label: 'Favorites',
+      },
+    ]);
   };
 
+  /**
+   * @function
+   * @description
+   */
   BooksViewModel.prototype._initVariables = function () {
     this.booksDataProvider = new ArrayDataProvider(this.booksData);
+
+    this.favoritesDialog = ModuleElementUtils.createConfig({
+      name: 'dialogs/favorites',
+      params: {
+        favoritesDialogId: this.favoritesDialogId,
+        listData: this.listData,
+        changeColorCallback: this._changeColor.bind(this, this.bookId),
+      },
+    });
   };
 
+  /**
+   * @function
+   * @description
+   */
   BooksViewModel.prototype._initBooksData = async function () {
     let dataFromService;
     try {
@@ -71,9 +94,25 @@ define([
       console.log(error);
     }
     if (dataFromService) {
-      this.booksData(dataFromService);
+      const bookSrs = dataFromService.map((book) => {
+        book.id = `book-custom-${book.id}`;
+        book.heartColor = ko.observable(null);
+        return book;
+      });
+      this.booksData(bookSrs);
       this.isLoading(false);
     }
+  };
+
+  /**
+   * @function
+   * @description
+   */
+  BooksViewModel.prototype._changeColor = function (bookId) {
+    document.getElementById(bookId()).changeHeartColor(BooksViewModel.COLORS.red);
+    // const currentBook = this.booksData().find((book) => book.id === bookId());
+    // if (!currentBook) return;
+    // currentBook.heartColor(BooksViewModel.COLORS.red);
   };
 
   /*
