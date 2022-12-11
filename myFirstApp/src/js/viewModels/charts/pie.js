@@ -1,20 +1,14 @@
-/**
- * @license
- * Copyright (c) 2014, 2021, Oracle and/or its affiliates.
- * Licensed under The Universal Permissive License (UPL), Version 1.0
- * as shown at https://oss.oracle.com/licenses/upl/
- * @ignore
- */
-/*
- * Your dashboard ViewModel code goes here
- */
 define([
   'knockout',
   'services/DashboardServices',
   'ojs/ojarraydataprovider',
   'ojs/ojconverter-number',
   'ojs/ojchart',
-], function (ko, DashboardServices,ArrayDataProvider, ojconverter_number_1) {
+], function (ko, DashboardServices, ArrayDataProvider, ojconverter_number_1) {
+  /**
+   * @module PieViewModel
+   * @description Your dashboard ViewModel code goes here
+   */
   function PieViewModel(params) {
     console.log(params);
 
@@ -46,7 +40,7 @@ define([
    *
    */
   PieViewModel.prototype._initObservables = function (params) {
-    const {usersPieSelectionValue, usersCountriesData} = params;
+    const { usersPieSelectionValue, usersCountriesData } = params;
 
     this.usersPieSelectionValue = usersPieSelectionValue;
     this.usersCountriesData = usersCountriesData;
@@ -77,7 +71,6 @@ define([
     this.usersPieDataProvider = new ArrayDataProvider(this.usersCountriesData, {
       keyAttributes: 'id',
     });
-    
   };
 
   /*

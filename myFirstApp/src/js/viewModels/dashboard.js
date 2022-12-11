@@ -1,12 +1,10 @@
 /**
+ * @module DashboardViewModel
+ * @description This module handles the dashboard data.
  * @license
  * Copyright (c) 2014, 2021, Oracle and/or its affiliates.
  * Licensed under The Universal Permissive License (UPL), Version 1.0
  * as shown at https://oss.oracle.com/licenses/upl/
- * @ignore
- */
-/*
- * Your dashboard ViewModel code goes here
  */
 define([
   'ojs/ojtranslation',
@@ -129,8 +127,9 @@ define([
 
   /**
    * @function _loadPieChartsData
-   * @description
+   * @description Loads the pie charts data.
    * @protected
+   * @async
    */
   DashboardViewModel.prototype._loadPieChartsData = async function () {
     let dataFromService;

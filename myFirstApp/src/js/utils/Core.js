@@ -1,16 +1,11 @@
-/**
- * @license
- * Copyright (c) 2014, 2021, Oracle and/or its affiliates.
- * Licensed under The Universal Permissive License (UPL), Version 1.0
- * as shown at https://oss.oracle.com/licenses/upl/
- * @ignore
- */
-/*
- * Singleton to store global methods.
- */
 define([], function () {
+  /**
+   * @module CoreUtils
+   * @description Singleton to store global methods.
+   */
   class CoreUtils {
     /**
+     * @method
      * @description A singleton to hold the variable we want to increment across all the viewModels.
      * generates an unique id by calling the generateUniqueId method.
      * @returns The existing instance, if not created it creates it, otherwise it will always return the existing one.
@@ -24,7 +19,7 @@ define([], function () {
     }
 
     /**
-     * @function generateUniqueId
+     * @method generateUniqueId
      * @description Generates an unique ID.
      * @returns An unique ID based on a internal counter.
      */
@@ -32,6 +27,12 @@ define([], function () {
       return `uid-${this.counter++}`;
     }
 
+    /**
+     * @method checkValidationGroup
+     * @description Checks a given validation group identified by its DOM id.
+     * @param {String} id THe validation group id.
+     * @returns {Boolean} If the validation group is valid.
+     */
     checkValidationGroup(id) {
       const tracker = document.getElementById(id);
       if (tracker.valid === 'valid') {
@@ -45,6 +46,11 @@ define([], function () {
       }
     }
 
+    /**
+     * @method toastMessagePosition
+     * @description Returns the global message configuration.
+     * @returns {Object} The message configuration.
+     */
     toastMessagePosition() {
       return {
         my: { vertical: 'top', horizontal: 'end' },
@@ -53,6 +59,11 @@ define([], function () {
       };
     }
 
+    /**
+     * @method getAutoTimeout
+     * @description Returns the global auto timeout configuration.
+     * @returns {Number} The auto timeout value.
+     */
     getAutoTimeout() {
       return 8000;
     }

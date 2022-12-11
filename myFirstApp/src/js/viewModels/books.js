@@ -1,11 +1,3 @@
-/**
- * @license
- * Copyright (c) 2014, 2021, Oracle and/or its affiliates.
- * Licensed under The Universal Permissive License (UPL), Version 1.0
- * as shown at https://oss.oracle.com/licenses/upl/
- * @ignore
- */
-
 define([
   'ojs/ojarraydataprovider',
   'services/BooksServices',
@@ -15,6 +7,15 @@ define([
   'ojs/ojprogress-circle',
   'custom-book/loader',
 ], function (ArrayDataProvider, BooksServices, ko, ModuleElementUtils) {
+  /**
+   * @module BooksViewModel
+   * @description This module has some books data
+   * @license
+   * Copyright (c) 2014, 2021, Oracle and/or its affiliates.
+   * Licensed under The Universal Permissive License (UPL), Version 1.0
+   * as shown at https://oss.oracle.com/licenses/upl/
+   * @author LPWJ
+   */
   function BooksViewModel() {
     this._initIds();
     this._initObservables();
@@ -41,16 +42,16 @@ define([
   };
 
   /**
-   * @function
-   * @description
+   * @function _initIds
+   * @description Inits all the ids.
    */
   BooksViewModel.prototype._initIds = function () {
     this.favoritesDialogId = 'favorites-dialog-id';
   };
 
   /**
-   * @function
-   * @description
+   * @function _initObservables
+   * @description Inits all the observables
    */
   BooksViewModel.prototype._initObservables = function () {
     this.bookId = ko.observable(null);
@@ -66,8 +67,8 @@ define([
   };
 
   /**
-   * @function
-   * @description
+   * @function _initVariables
+   * @description Inits all the variables.
    */
   BooksViewModel.prototype._initVariables = function () {
     this.booksDataProvider = new ArrayDataProvider(this.booksData);
@@ -83,8 +84,8 @@ define([
   };
 
   /**
-   * @function
-   * @description
+   * @function _initBooksData
+   * @description Inits all the book data.
    */
   BooksViewModel.prototype._initBooksData = async function () {
     let dataFromService;
@@ -105,8 +106,9 @@ define([
   };
 
   /**
-   * @function
-   * @description
+   * @function _changeColor
+   * @description Changes the color based on the book ID.
+   * @param {ko.observable} bookId
    */
   BooksViewModel.prototype._changeColor = function (bookId) {
     document.getElementById(bookId()).changeHeartColor(BooksViewModel.COLORS.red);

@@ -1,9 +1,10 @@
 /**
+ * @module FavoritesDialogViewModel
+ * @description This modules handles the favorites dialog logic.
  * @license
  * Copyright (c) 2014, 2021, Oracle and/or its affiliates.
  * Licensed under The Universal Permissive License (UPL), Version 1.0
  * as shown at https://oss.oracle.com/licenses/upl/
- * @ignore
  */
 
 define([
@@ -16,11 +17,6 @@ define([
   'ojs/ojselectsingle',
 ], function (Translations, ko, ArrayDataProvider) {
   const _t = Translations.getTranslatedString;
-  /**
-   * @module FavoritesDialogViewModel
-   * @description
-   * @param {*} context
-   */
   function FavoritesDialogViewModel(context) {
     this._initIds(context);
 
@@ -39,7 +35,7 @@ define([
 
   /**
    * @function _initIds
-   * @description
+   * @description Inits all the Ids.
    * @protected
    */
   FavoritesDialogViewModel.prototype._initIds = function (context) {
@@ -48,7 +44,7 @@ define([
 
   /**
    * @function _initLabels
-   * @description
+   * @description Inits all the labels.
    * @protected
    */
   FavoritesDialogViewModel.prototype._initLabels = function () {
@@ -60,7 +56,7 @@ define([
 
   /**
    * @function _initObservables
-   * @description
+   * @description Inits all the observables.
    * @param {Object} context
    * @protected
    */
@@ -71,7 +67,7 @@ define([
 
   /**
    * @function _initVariables
-   * @description
+   * @description Inits all the variables.
 
    * @protected
    */
@@ -85,7 +81,7 @@ define([
 
   /**
    * @function _handleSaveToList
-   * @description
+   * @description Handles the save to list action.
    * @protected
    */
   FavoritesDialogViewModel.prototype._handleSaveToList = function () {
@@ -97,7 +93,7 @@ define([
 
   /**
    * @function _handleCloseDialog
-   * @description
+   * @description Handles the close dialog button click.
    * @protected
    */
   FavoritesDialogViewModel.prototype._handleCloseDialog = function () {
@@ -106,7 +102,7 @@ define([
 
   /**
    * @function _beforeFavoritesDialogClose
-   * @description
+   * @description handles the event before closing the dialog.
    * @protected
    */
   FavoritesDialogViewModel.prototype._beforeFavoritesDialogClose = function () {

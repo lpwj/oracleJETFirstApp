@@ -6,13 +6,17 @@
     "@oracle/oraclejet": "~11.1.0"
   },
   "devDependencies": {
+    "@oracle/oraclejet-tooling": "~11.1.0",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.1",
-    "underscore": "^1.10.2",
-    "@oracle/oraclejet-tooling": "~11.1.0"
+    "docdash": "^2.0.0",
+    "underscore": "^1.10.2"
   },
   "engines": {
     "node": ">=12.21.0"
   },
-  "private": true
+  "private": true,
+  "scripts": {
+    "docs": "jsdoc -d docs --configure jsdocConf.json"
+  }
 }

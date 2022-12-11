@@ -1,9 +1,10 @@
 /**
+ * @module CustomerViewModel
+ * @description This modules has the data about the customers.
  * @license
  * Copyright (c) 2014, 2021, Oracle and/or its affiliates.
  * Licensed under The Universal Permissive License (UPL), Version 1.0
  * as shown at https://oss.oracle.com/licenses/upl/
- * @ignore
  */
 /*
  * Your customer ViewModel code goes here
@@ -62,7 +63,6 @@ define([
   /**
    * @function _initAllLabels
    * @description Initializes all labels (Translations).
-   *
    */
   CustomerViewModel.prototype._initAllLabels = function () {
     this.inputFirstNameLabel = _t('inputs.firstName');
@@ -179,8 +179,8 @@ define([
 
   /**
    * @function _onInputFirstNameValueChange
-   * @description
-   *
+   * @description Handles the input on value change event.
+   * @param {Object} event The value changed event.
    */
   CustomerViewModel.prototype._onInputFirstNameValueChange = function (event) {
     const value = event.detail.value;
@@ -193,8 +193,8 @@ define([
 
   /**
    * @function _onInputFirstNameRawValueChange
-   * @description
-   *
+   * @description  Handles the input on raw value change event.
+   * @param {Object} event The value changed event.
    */
   CustomerViewModel.prototype._onInputFirstNameRawValueChange = function (event) {
     if (event.detail.value) {
@@ -204,8 +204,8 @@ define([
 
   /**
    * @function _onInputWeightRawValueChange
-   * @description
-   *
+   * @description  Handles the input on raw value change event.
+   * @param {Object} event The value changed event.
    */
   CustomerViewModel.prototype._onInputWeightRawValueChange = function (event) {
     const value = event.detail.value;
@@ -222,8 +222,8 @@ define([
 
   /**
    * @function _onInputBirthdayValueChanged
-   * @description
-   *
+   * @description Handles the input on value change event.
+   * @param {Object} event The value changed event.
    */
   CustomerViewModel.prototype._onInputBirthdayValueChanged = function (event) {
     const value = event.detail.value;
@@ -238,8 +238,8 @@ define([
 
   /**
    * @function _onInputCountryValueChanged
-   * @description
-   *
+   * @description Handles the input on value change event.
+   * @param {Object} event The value changed event.
    */
   CustomerViewModel.prototype._onInputCountryValueChanged = function (event) {
     const value = event.detail.value;
@@ -290,6 +290,7 @@ define([
   /**
    * @function _onCreateButtonClick
    * @description Executed when the user click the create button.
+   * @async
    */
   CustomerViewModel.prototype._onCreateButtonClick = async function () {
     const valid = CoreUtils.checkValidationGroup(this.formValidationGroupId);

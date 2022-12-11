@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright (c) 2014, 2021, Oracle and/or its affiliates.
- * Licensed under The Universal Permissive License (UPL), Version 1.0
- * as shown at https://oss.oracle.com/licenses/upl/
- * @ignore
- */
 
 define([
   'ojs/ojtranslation',
@@ -18,8 +11,8 @@ define([
   const _t = Translations.getTranslatedString;
   /**
    * @module CustomBookViewModel
-   * @description
-   * @param {*} context
+   * @description This is the view model to handle the book composite.
+   * @param {Object} context The viewModel context.
    */
   function CustomBookViewModel(context) {
     this._initIds();
@@ -44,14 +37,14 @@ define([
 
   /**
    * @function _initIds
-   * @description
+   * @description Inits all the ids.
    * @protected
    */
   CustomBookViewModel.prototype._initIds = function () {};
 
   /**
    * @function _initLabels
-   * @description
+   * @description Inits all the labels.
    * @protected
    */
   CustomBookViewModel.prototype._initLabels = function () {
@@ -61,7 +54,7 @@ define([
 
   /**
    * @function _initObservables
-   * @description
+   * @description Inits all the observables.
    * @protected
    */
   CustomBookViewModel.prototype._initObservables = function () {
@@ -77,7 +70,7 @@ define([
 
   /**
    * @function _initVariables
-   * @description
+   * @description Inits all the variables.
    * @param {Object} context
    * @protected
    */
@@ -87,8 +80,8 @@ define([
 
   /**
    * @function _handleAddToCart
-   * @description
-   * @param {Object} e
+   * @description Handles the add to card button click.
+   * @param {Object} e The click event
    */
   CustomBookViewModel.prototype._handleAddToCart = function (e) {
     alert('add to cart');
@@ -96,7 +89,7 @@ define([
 
   /**
    * @function _handleAddToList
-   * @description
+   * @description  Handles the add to list button click.
    * @protected
    */
   CustomBookViewModel.prototype._handleAddToList = function () {
@@ -109,7 +102,7 @@ define([
 
   /**
    * @function _onClick
-   * @description
+   * @description Handles the on click event.
    * @protected
    */
   CustomBookViewModel.prototype._onClick = function () {
@@ -122,7 +115,7 @@ define([
 
   /**
    * @function _changeHeartColor
-   * @description
+   * @description Changes the color of the heart.
    * @public
    */
   CustomBookViewModel.prototype._changeHeartColor = function (value) {
@@ -131,7 +124,7 @@ define([
 
   /**
    * @function _getHeartColor
-   * @description
+   * @description Returns the heart's color.
    * @public
    */
   CustomBookViewModel.prototype._getHeartColor = function () {
